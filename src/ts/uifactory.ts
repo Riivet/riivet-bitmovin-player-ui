@@ -41,6 +41,7 @@ import { MetadataLabel, MetadataLabelContent } from './components/metadatalabel'
 import { PlayerUtils } from './playerutils';
 import { Label } from './components/label';
 import { CastUIContainer } from './components/castuicontainer';
+import { BackButton } from './components/backbutton';
 import { UIConditionContext, UIManager } from './uimanager';
 import { UIConfig } from './uiconfig';
 import { PlayerAPI } from 'bitmovin-player';
@@ -51,6 +52,7 @@ import { SpatialNavigation } from './spatialnavigation/spatialnavigation';
 import { RootNavigationGroup } from './spatialnavigation/rootnavigationgroup';
 import { ListNavigationGroup, ListOrientation } from './spatialnavigation/ListNavigationGroup';
 import { EcoModeContainer } from './components/ecomodecontainer';
+import { Button, SettingsPanelPageBackButton } from './main';
 
 export namespace UIFactory {
   export function buildDefaultUI(player: PlayerAPI, config: UIConfig = {}): UIManager {
@@ -291,6 +293,8 @@ export namespace UIFactory {
       ],
     });
 
+    
+
     return new UIContainer({
       components: [
         subtitleOverlay,
@@ -301,6 +305,8 @@ export namespace UIFactory {
         controlBar,
         new TitleBar({
           components: [
+            new BackButton(),
+            // new SettingsPanelPageBackButton({container: null}),
             new MetadataLabel({ content: MetadataLabelContent.Title }),
             new CastToggleButton(),
             new VRToggleButton(),
