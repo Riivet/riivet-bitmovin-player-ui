@@ -31,6 +31,9 @@ export class TitleBar extends Container<TitleBarConfig> {
       cssClass: 'ui-titlebar',
       hidden: true,
       components: [
+        // new SettingsPanelPageBackButton({
+        //   container: null,
+        // }),
         new MetadataLabel({ content: MetadataLabelContent.Title }),
         new MetadataLabel({ content: MetadataLabelContent.Description }),
       ],
