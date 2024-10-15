@@ -7,11 +7,7 @@ on:
       - "v*"
 
 jobs:
-  test_and_build:
-    uses: ./.github/workflows/ci.yml
-
   download_and_publish:
-    needs: test_and_build
     runs-on: ubuntu-latest
 
     steps:
