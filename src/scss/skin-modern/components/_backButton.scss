@@ -5,6 +5,8 @@
   @extend %ui-button;
 
   background-image: url('../../assets/skin-modern/images/back-chevron.svg');
+  background-position: left center;
+  width: 100%;
 
   &:hover {
     @include svg-icon-shadow;

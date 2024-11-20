@@ -25,6 +25,13 @@ export class HugePlaybackToggleButton extends PlaybackToggleButton {
     // Update button state through API events
     super.configure(player, uimanager, false);
 
+    uimanager.onControlsShow.subscribe(() => {
+      this.show();
+    });
+    uimanager.onControlsHide.subscribe(() => {
+      this.hide();
+    });
+
     // Set enterFullscreenOnInitialPlayback if set in the uimanager config
     if (typeof uimanager.getConfig().enterFullscreenOnInitialPlayback === 'boolean') {
       this.config.enterFullscreenOnInitialPlayback = uimanager.getConfig().enterFullscreenOnInitialPlayback;

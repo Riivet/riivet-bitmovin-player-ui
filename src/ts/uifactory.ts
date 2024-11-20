@@ -48,6 +48,7 @@ import { PlayerUtils } from './playerutils';
 import { Label } from './components/label';
 import { CastUIContainer } from './components/castuicontainer';
 import { BackButton } from './components/backbutton';
+import { VideoMaskOverlay } from './components/videomaskoverlay';
 import { UIConditionContext, UIManager } from './uimanager';
 import { UIConfig } from './uiconfig';
 import { PlayerAPI } from 'bitmovin-player';
@@ -349,19 +350,19 @@ export namespace UIFactory {
         subtitleOverlay,
         new BufferingOverlay(),
         new CastStatusOverlay(),
+        new VideoMaskOverlay(),
         new PlaybackToggleOverlay(),
         new RecommendationOverlay(),
         controlBar,
         new TitleBar({
           components: [
             new BackButton(),
-            // new SettingsPanelPageBackButton({container: null}),
-            new MetadataLabel({ content: MetadataLabelContent.Title }),
+            // new MetadataLabel({ content: MetadataLabelContent.Title }),
             new CastToggleButton(),
             new VRToggleButton(),
             new PictureInPictureToggleButton(),
             new AirPlayToggleButton(),
-            new VolumeToggleButton(),
+            // new VolumeToggleButton(),
             new SettingsToggleButton({ settingsPanel: settingsPanel }),
             new FullscreenToggleButton(),
           ],

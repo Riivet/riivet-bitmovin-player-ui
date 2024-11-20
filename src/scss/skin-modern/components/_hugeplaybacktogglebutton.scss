@@ -61,7 +61,7 @@
     .#{$prefix}-image {
       animation: #{$prefix}-fade-out $animation-duration cubic-bezier(.55, .055, .675, .19); // http://easings.net/de#easeInCubic
       transition: visibility 0s $animation-duration;
-      visibility: hidden;
+      visibility: visible;
     }
   }
 

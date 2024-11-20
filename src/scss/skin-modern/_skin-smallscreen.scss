@@ -63,9 +63,21 @@
   .#{$prefix}-ui-hugeplaybacktogglebutton {
     .#{$prefix}-image {
       background-image: url('../../assets/skin-modern/images/play.svg');
-      background-size: 4em;
+      background-size: 5em;
+      animation: none;
     }
   }
+
+.#{$prefix}-ui-hugeplaybacktogglebutton {
+  &.#{$prefix}-on {
+    .#{$prefix}-image {
+      background-image: url('../../assets/skin-modern/images/pause.svg');
+      background-size: 5em;
+      animation: none;
+      visibility: visible;
+    }
+  }
+}
 
   // When casting, also display pause icon and disable animations because the transition doesn't look right
   // sass-lint:disable nesting-depth
