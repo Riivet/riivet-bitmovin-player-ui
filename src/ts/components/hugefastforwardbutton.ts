@@ -1,21 +1,22 @@
+import { Button, ButtonConfig } from './button';
 import { PlayerAPI } from 'bitmovin-player';
 import { i18n } from '../localization/i18n';
 import { UIInstanceManager } from '../uimanager';
-import { Button, ButtonConfig } from './button';
 import { PlayerUtils } from '../playerutils';
 import LiveStreamDetectorEventArgs = PlayerUtils.LiveStreamDetectorEventArgs;
 
 declare const window: any;
 
-export class BackButton extends Button<ButtonConfig> {
+export class HugeFastforwardButton extends Button<ButtonConfig> {
   constructor(config: ButtonConfig = {}) {
     super(config);
     this.config = this.mergeConfig(
       config,
       {
-        cssClass: 'ui-back-chevron-button',
-        text: i18n.getLocalizer('back'),
-        ariaLabel: i18n.getLocalizer('back'),
+        cssClass: 'ui-fastforward-button',
+        text: i18n.getLocalizer('fastforward'),
+        ariaLabel: i18n.getLocalizer('fastforward'),
+        role: 'button',
       },
       this.config,
     );
@@ -43,11 +44,23 @@ export class BackButton extends Button<ButtonConfig> {
       },
     );
 
+    uimanager.onControlsShow.subscribe(() => {
+      this.show();
+    });
+    uimanager.onControlsHide.subscribe(() => {
+      this.hide();
+    });
+
     this.onClick.subscribe(() => {
       if (window.bitmovin.customMessageHandler) {
-        let result = window.bitmovin.customMessageHandler.sendSynchronous('closePlayer');
+        let result =
+          window.bitmovin.customMessageHandler.sendSynchronous(
+            'fastforwardContent',
+          );
         console.log('Return value from native:', result);
-        window.bitmovin.customMessageHandler.sendAsynchronous('closePlayerAsync');
+        window.bitmovin.customMessageHandler.sendAsynchronous(
+          'fastforwardContentAsync',
+        );
       }
     });
   }

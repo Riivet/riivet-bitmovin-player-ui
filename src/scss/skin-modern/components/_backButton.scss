@@ -1,0 +1,12 @@
+@import '../variables';
+@import '../mixins';
+
+.#{$prefix}-ui-back-chevron-button {
+  @extend %ui-button;
+
+  background-image: url('../../assets/skin-modern/images/back-chevron.svg');
+
+  &:hover {
+    @include svg-icon-shadow;
+  }
+}

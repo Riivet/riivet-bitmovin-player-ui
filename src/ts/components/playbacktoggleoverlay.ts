@@ -1,5 +1,8 @@
-import {Container, ContainerConfig} from './container';
-import {HugePlaybackToggleButton} from './hugeplaybacktogglebutton';
+import { Container, ContainerConfig } from './container';
+
+import { HugePlaybackToggleButton } from './hugeplaybacktogglebutton';
+import { HugeRewindButton } from './hugerewindbutton';
+import { HugeFastforwardButton } from './hugefastforwardbutton';
 
 /**
  * @category Configs
@@ -19,19 +22,33 @@ export interface PlaybackToggleOverlayConfig extends ContainerConfig {
  * @category Components
  */
 export class PlaybackToggleOverlay extends Container<PlaybackToggleOverlayConfig> {
-
   private playbackToggleButton: HugePlaybackToggleButton;
+  private rewindButton: HugeRewindButton;
+  private fastforwardButton: HugeFastforwardButton;
 
   constructor(config: PlaybackToggleOverlayConfig = {}) {
     super(config);
 
     this.playbackToggleButton = new HugePlaybackToggleButton({
-      enterFullscreenOnInitialPlayback: Boolean(config.enterFullscreenOnInitialPlayback),
+      enterFullscreenOnInitialPlayback: Boolean(
+        config.enterFullscreenOnInitialPlayback,
+      ),
     });
+    this.rewindButton = new HugeRewindButton();
+    this.fastforwardButton = new HugeFastforwardButton();
 
-    this.config = this.mergeConfig(config, {
-      cssClass: 'ui-playbacktoggle-overlay',
-      components: [this.playbackToggleButton],
-    }, this.config);
+    this.config = this.mergeConfig(
+      config,
+      {
+        // cssClass: 'ui-playbacktoggle-overlay',
+        cssClasses: ['ui-rewindplayfastforward-overlay'],
+        components: [
+          this.rewindButton,
+          this.playbackToggleButton,
+          this.fastforwardButton,
+        ],
+      },
+      this.config,
+    );
   }
 }

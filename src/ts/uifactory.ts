@@ -12,7 +12,10 @@ import { SubtitleSettingsLabel } from './components/subtitlesettings/subtitleset
 import { SubtitleSelectBox } from './components/subtitleselectbox';
 import { ControlBar } from './components/controlbar';
 import { Container, ContainerConfig } from './components/container';
-import { PlaybackTimeLabel, PlaybackTimeLabelMode } from './components/playbacktimelabel';
+import {
+  PlaybackTimeLabel,
+  PlaybackTimeLabelMode,
+} from './components/playbacktimelabel';
 import { SeekBar } from './components/seekbar';
 import { SeekBarLabel } from './components/seekbarlabel';
 import { PlaybackToggleButton } from './components/playbacktogglebutton';
@@ -37,7 +40,10 @@ import { AdClickOverlay } from './components/adclickoverlay';
 import { AdMessageLabel } from './components/admessagelabel';
 import { AdSkipButton } from './components/adskipbutton';
 import { CloseButton } from './components/closebutton';
-import { MetadataLabel, MetadataLabelContent } from './components/metadatalabel';
+import {
+  MetadataLabel,
+  MetadataLabelContent,
+} from './components/metadatalabel';
 import { PlayerUtils } from './playerutils';
 import { Label } from './components/label';
 import { CastUIContainer } from './components/castuicontainer';
@@ -50,24 +56,38 @@ import { SubtitleListBox } from './components/subtitlelistbox';
 import { AudioTrackListBox } from './components/audiotracklistbox';
 import { SpatialNavigation } from './spatialnavigation/spatialnavigation';
 import { RootNavigationGroup } from './spatialnavigation/rootnavigationgroup';
-import { ListNavigationGroup, ListOrientation } from './spatialnavigation/ListNavigationGroup';
+import {
+  ListNavigationGroup,
+  ListOrientation,
+} from './spatialnavigation/ListNavigationGroup';
 import { EcoModeContainer } from './components/ecomodecontainer';
-import { Button, SettingsPanelPageBackButton } from './main';
 
 export namespace UIFactory {
-  export function buildDefaultUI(player: PlayerAPI, config: UIConfig = {}): UIManager {
+  export function buildDefaultUI(
+    player: PlayerAPI,
+    config: UIConfig = {},
+  ): UIManager {
     return UIFactory.buildModernUI(player, config);
   }
 
-  export function buildDefaultSmallScreenUI(player: PlayerAPI, config: UIConfig = {}): UIManager {
+  export function buildDefaultSmallScreenUI(
+    player: PlayerAPI,
+    config: UIConfig = {},
+  ): UIManager {
     return UIFactory.buildModernSmallScreenUI(player, config);
   }
 
-  export function buildDefaultCastReceiverUI(player: PlayerAPI, config: UIConfig = {}): UIManager {
+  export function buildDefaultCastReceiverUI(
+    player: PlayerAPI,
+    config: UIConfig = {},
+  ): UIManager {
     return UIFactory.buildModernCastReceiverUI(player, config);
   }
 
-  export function buildDefaultTvUI(player: PlayerAPI, config: UIConfig = {}): UIManager {
+  export function buildDefaultTvUI(
+    player: PlayerAPI,
+    config: UIConfig = {},
+  ): UIManager {
     return UIFactory.buildModernTvUI(player, config);
   }
 
@@ -77,10 +97,22 @@ export namespace UIFactory {
     let mainSettingsPanelPage: SettingsPanelPage;
 
     const components: Container<ContainerConfig>[] = [
-      new SettingsPanelItem(i18n.getLocalizer('settings.video.quality'), new VideoQualitySelectBox()),
-      new SettingsPanelItem(i18n.getLocalizer('speed'), new PlaybackSpeedSelectBox()),
-      new SettingsPanelItem(i18n.getLocalizer('settings.audio.track'), new AudioTrackSelectBox()),
-      new SettingsPanelItem(i18n.getLocalizer('settings.audio.quality'), new AudioQualitySelectBox()),
+      new SettingsPanelItem(
+        i18n.getLocalizer('settings.video.quality'),
+        new VideoQualitySelectBox(),
+      ),
+      new SettingsPanelItem(
+        i18n.getLocalizer('speed'),
+        new PlaybackSpeedSelectBox(),
+      ),
+      new SettingsPanelItem(
+        i18n.getLocalizer('settings.audio.track'),
+        new AudioTrackSelectBox(),
+      ),
+      new SettingsPanelItem(
+        i18n.getLocalizer('settings.audio.quality'),
+        new AudioQualitySelectBox(),
+      ),
     ];
 
     if (config.ecoMode) {
@@ -195,7 +227,12 @@ export namespace UIFactory {
         new AdClickOverlay(),
         new PlaybackToggleOverlay(),
         new Container({
-          components: [new AdMessageLabel({ text: i18n.getLocalizer('ads.remainingTime') }), new AdSkipButton()],
+          components: [
+            new AdMessageLabel({
+              text: i18n.getLocalizer('ads.remainingTime'),
+            }),
+            new AdSkipButton(),
+          ],
           cssClass: 'ui-ads-status',
         }),
         new ControlBar({
@@ -228,10 +265,22 @@ export namespace UIFactory {
 
     let mainSettingsPanelPage = new SettingsPanelPage({
       components: [
-        new SettingsPanelItem(i18n.getLocalizer('settings.video.quality'), new VideoQualitySelectBox()),
-        new SettingsPanelItem(i18n.getLocalizer('speed'), new PlaybackSpeedSelectBox()),
-        new SettingsPanelItem(i18n.getLocalizer('settings.audio.track'), new AudioTrackSelectBox()),
-        new SettingsPanelItem(i18n.getLocalizer('settings.audio.quality'), new AudioQualitySelectBox()),
+        new SettingsPanelItem(
+          i18n.getLocalizer('settings.video.quality'),
+          new VideoQualitySelectBox(),
+        ),
+        new SettingsPanelItem(
+          i18n.getLocalizer('speed'),
+          new PlaybackSpeedSelectBox(),
+        ),
+        new SettingsPanelItem(
+          i18n.getLocalizer('settings.audio.track'),
+          new AudioTrackSelectBox(),
+        ),
+        new SettingsPanelItem(
+          i18n.getLocalizer('settings.audio.quality'),
+          new AudioQualitySelectBox(),
+        ),
       ],
     });
 
@@ -272,7 +321,9 @@ export namespace UIFactory {
     settingsPanel.addComponent(subtitleSettingsPanelPage);
 
     settingsPanel.addComponent(new CloseButton({ target: settingsPanel }));
-    subtitleSettingsPanelPage.addComponent(new CloseButton({ target: settingsPanel }));
+    subtitleSettingsPanelPage.addComponent(
+      new CloseButton({ target: settingsPanel }),
+    );
 
     let controlBar = new ControlBar({
       components: [
@@ -292,8 +343,6 @@ export namespace UIFactory {
         }),
       ],
     });
-
-    
 
     return new UIContainer({
       components: [
@@ -345,7 +394,10 @@ export namespace UIFactory {
           ],
         }),
         new Container({
-          components: [new AdMessageLabel({ text: 'Ad: {remainingTime} secs' }), new AdSkipButton()],
+          components: [
+            new AdMessageLabel({ text: 'Ad: {remainingTime} secs' }),
+            new AdSkipButton(),
+          ],
           cssClass: 'ui-ads-status',
         }),
       ],
@@ -399,7 +451,10 @@ export namespace UIFactory {
     });
   }
 
-  export function buildModernUI(player: PlayerAPI, config: UIConfig = {}): UIManager {
+  export function buildModernUI(
+    player: PlayerAPI,
+    config: UIConfig = {},
+  ): UIManager {
     // show smallScreen UI only on mobile/handheld devices
     let smallScreenSwitchWidth = 600;
 
@@ -410,7 +465,10 @@ export namespace UIFactory {
           ui: modernSmallScreenAdsUI(),
           condition: (context: UIConditionContext) => {
             return (
-              context.isMobile && context.documentWidth < smallScreenSwitchWidth && context.isAd && context.adRequiresUi
+              context.isMobile &&
+              context.documentWidth < smallScreenSwitchWidth &&
+              context.isAd &&
+              context.adRequiresUi
             );
           },
         },
@@ -442,7 +500,10 @@ export namespace UIFactory {
     );
   }
 
-  export function buildModernSmallScreenUI(player: PlayerAPI, config: UIConfig = {}): UIManager {
+  export function buildModernSmallScreenUI(
+    player: PlayerAPI,
+    config: UIConfig = {},
+  ): UIManager {
     return new UIManager(
       player,
       [
@@ -463,11 +524,17 @@ export namespace UIFactory {
     );
   }
 
-  export function buildModernCastReceiverUI(player: PlayerAPI, config: UIConfig = {}): UIManager {
+  export function buildModernCastReceiverUI(
+    player: PlayerAPI,
+    config: UIConfig = {},
+  ): UIManager {
     return new UIManager(player, modernCastReceiverUI(), config);
   }
 
-  export function buildModernTvUI(player: PlayerAPI, config: UIConfig = {}): UIManager {
+  export function buildModernTvUI(
+    player: PlayerAPI,
+    config: UIConfig = {},
+  ): UIManager {
     return new UIManager(
       player,
       [
@@ -550,7 +617,9 @@ export namespace UIFactory {
             }),
             new Container({
               components: [
-                new MetadataLabel({ content: MetadataLabelContent.Description }),
+                new MetadataLabel({
+                  content: MetadataLabelContent.Description,
+                }),
                 subtitleListPanel,
                 audioTrackListPanel,
               ],
@@ -571,9 +640,23 @@ export namespace UIFactory {
     });
 
     const spatialNavigation = new SpatialNavigation(
-      new RootNavigationGroup(uiContainer, playbackToggleOverlay, seekBar, audioToggleButton, subtitleToggleButton),
-      new ListNavigationGroup(ListOrientation.Vertical, subtitleListPanel, subtitleListBox),
-      new ListNavigationGroup(ListOrientation.Vertical, audioTrackListPanel, audioTrackListBox),
+      new RootNavigationGroup(
+        uiContainer,
+        playbackToggleOverlay,
+        seekBar,
+        audioToggleButton,
+        subtitleToggleButton,
+      ),
+      new ListNavigationGroup(
+        ListOrientation.Vertical,
+        subtitleListPanel,
+        subtitleListBox,
+      ),
+      new ListNavigationGroup(
+        ListOrientation.Vertical,
+        audioTrackListPanel,
+        audioTrackListBox,
+      ),
     );
 
     return {

@@ -1,0 +1,19 @@
+@import '../variables';
+@import '../mixins';
+
+.#{$prefix}-ui-fastforward-button {
+  @extend %ui-button;
+  @include hidden-animated-focusable;
+  
+  background-image: url('../../assets/skin-modern/images/fastforward.svg');
+  height: 3em;
+  width: 3em;
+  background-size: 3em;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+
+  &:hover {
+    @include svg-icon-shadow;
+  }
+}
