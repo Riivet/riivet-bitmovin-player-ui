@@ -24,6 +24,7 @@ export class HugeRewindButton extends Button<ButtonConfig> {
   configure(player: PlayerAPI, uimanager: UIInstanceManager): void {
     super.configure(player, uimanager);
 
+    // TODO: Show button if DVR is enabled
     if (player.isLive()) {
       this.hide();
     }

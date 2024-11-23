@@ -24,23 +24,9 @@ export class BackButton extends Button<ButtonConfig> {
   configure(player: PlayerAPI, uimanager: UIInstanceManager): void {
     super.configure(player, uimanager);
 
-    if (player.isLive()) {
-      this.hide();
-    }
-
     const liveStreamDetector = new PlayerUtils.LiveStreamDetector(
       player,
       uimanager,
-    );
-
-    liveStreamDetector.onLiveChanged.subscribe(
-      (sender, args: LiveStreamDetectorEventArgs) => {
-        if (args.live) {
-          this.hide();
-        } else {
-          this.show();
-        }
-      },
     );
 
     this.onClick.subscribe(() => {
