@@ -40,7 +40,6 @@ export class PlaybackToggleOverlay extends Container<PlaybackToggleOverlayConfig
     this.config = this.mergeConfig(
       config,
       {
-        // cssClass: 'ui-playbacktoggle-overlay',
         cssClasses: ['ui-rewindplayfastforward-overlay'],
         components: [
           this.rewindButton,
